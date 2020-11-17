@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title>Most Popular BART Stations</title>
     <style type="text/css">
-
+    
     path{
         stroke: white;
         stroke-width: .25px;
@@ -14,33 +14,60 @@
     }
     h1{
         font-family: "Helvetica Neue";
-        text-align:center;
-        font-size: 26px;
+        font-size: 28px;
         color: steelblue;
+        text-align: center;
+        margin-top: 30px;
+        margin-bottom: 10px;
     }
     p{
         font-family: "Helvetica Neue";
-        font-size: 16px;
-        color: black;
-        margin-left: 30px;
-        margin-right: 30px;
-        margin-top: 20px;
+        text-align: center;
+        margin-left: 80px;
+        margin-right: 80px;
+    }
+    #intro{
+        font-size: 18px;
+        margin-bottom: 20px;
+    }
+    #byline{
+        color:dimgray;
+        margin-top:20px;
         margin-bottom: 30px;
     }
-   
+    body{
+        font-family: "Helvetica Neue"
+    }
+
     </style>
     
 </head>
 <body>
-
+  <div>
+      
     <h1>Where do people enter and exit BART the most?</h1>
     
-    <p>Founded in 1957, The Bay Area Rapid Transit (BART) serves 50 stations throughout the San Francisco Bay Area. Here are the five BART stations with the most traffic in October 2020, which are, not surprisingly, all in San Francisco. The colored bands indicate the stations where people board and the gray ones are where they get off. </p>
+    <p id="intro">Founded in 1957, the San Francisco Bay Area Rapid Transit (BART) serves 50 stations. Here are the five BART stations with the most traffic in October 2020.</p>
+
+  </div>
+    
+  <svg width="400px" height="400px">
+    
+      
+      <rect x="100" y="28" width="15" height="15" fill="purple"></rect>  
+      <rect x="115" y="28" width="15" height="15" fill="red"></rect>
+      <rect x="130" y="28" width="15" height="15" fill="forestgreen"></rect>
+      <rect x="145" y="28" width="15" height="15" fill="orange"></rect>
+      <rect x="160" y="28" width="15" height="15" fill="steelblue"></rect>
+      <rect x="100" y="62" width="75" height="15" fill="silver"></rect>
+      <text x="185" y="40" fill="black">Entry Station</text>
+      <text x="185" y="75" fill="black">Exit Station</text>
+  </svg>
     
 <script src="js/d3.v5.min.js"></script>
 <script>
 
-var margin      = {top: 10, right: 10, bottom: 20, left: 75},
+var margin      = {top: 50, right: 10, bottom: 50, left: 10},
     width       = 800 - margin.left - margin.right,
     height      = 800 - margin.top  - margin.bottom,
     innerRadius = Math.min(width, height) * .35, //35% of smallest measurement
@@ -159,11 +186,13 @@ d3.csv("bartdata.csv").then(function(d){
           return fc[i];
       })
       .style("font-family","Helvetica Neue")
-      .style("font-size","13px");
+      .style("font-size","16px")
+      .style("")
 });
 </script>
-    
-    <p>By Yinuo Shi. Data source: BART. Code courtesy: Jeremy Rue.</p>
+<div>
+    <p id="byline">By Yinuo Shi. Data source: BART. Code courtesy: Jeremy Rue.</p>
+ </div>
     
 </body>
 </html>
